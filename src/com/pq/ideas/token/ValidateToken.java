@@ -50,6 +50,12 @@ public class ValidateToken {
      * @throws Exception
      */
     public ContainerRequestContext validateTokenRequest(final ContainerRequestContext containerRequest) throws Exception {
+        containerRequest.getHeaders().add("Access-Control-Allow-Origin", "*");
+        containerRequest.getHeaders().add("Access-Control-Allow-Headers", "origin, content-type, accept, authorization,X-ECMS-Session");
+        containerRequest.getHeaders().add("Access-Control-Allow-Credentials", "true");
+        containerRequest.getHeaders().add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD");
+        containerRequest.getHeaders().add("Access-Control-Max-Age", "1209600");
+
         uri = containerRequest.getUriInfo().getAbsolutePath().toString();
 
         // For the initial menu when not logged.
